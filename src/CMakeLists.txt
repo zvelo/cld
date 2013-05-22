@@ -26,6 +26,17 @@ SET(SOURCES
   languages/internal/languages.cc
 )
 
+SET(HEADERS
+  languages/proto/languages.pb.h
+  encodings/compact_lang_det/compact_lang_det.h
+  languages/public/languages.h
+  encodings/compact_lang_det/win/cld_utf8statetable.h
+  encodings/compact_lang_det/win/cld_basictypes.h
+  encodings/lang_enc.h
+  encodings/public/encodings.h
+  encodings/proto/encodings.pb.h
+)
+
 ADD_DEFINITIONS(-DCLD_WINDOWS)
 INCLUDE_DIRECTORIES(${CMAKE_CURRENT_SOURCE_DIR})
 
@@ -36,3 +47,8 @@ INSTALL(
   LIBRARY DESTINATION lib
   ARCHIVE DESTINATION lib
   PUBLIC_HEADER DESTINATION include/cld)
+
+FOREACH(header ${HEADERS})
+  GET_FILENAME_COMPONENT(currdir ${header} PATH)
+  INSTALL(FILES ${header} DESTINATION "include/cld/${currdir}")
+ENDFOREACH()
