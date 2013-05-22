@@ -35,6 +35,9 @@ SET(HEADERS
   encodings/lang_enc.h
   encodings/public/encodings.h
   encodings/proto/encodings.pb.h
+  base/basictypes.h
+  base/port.h
+  base/build_config.h
 )
 
 ADD_DEFINITIONS(-DCLD_WINDOWS)
